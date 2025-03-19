@@ -136,6 +136,33 @@ header img {
   width: 100%;
 }
 
+#diagramcont {
+  background-color: #fff;
+  flex-wrap: wrap;
+  place-content: center;
+  max-width: 100%;
+  padding: 10%;
+  display: flex;
+}
+
+#cirkeldiagram, #stapeldiagram {
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+}
+
+@media (width <= 800px) {
+  #diagramcont {
+    flex-direction: column;
+  }
+
+  #cirkeldiagram, #stapeldiagram {
+    width: 90%;
+    height: 250px;
+  }
+}
+
 .mobilemenu {
   z-index: 4;
   width: 45%;

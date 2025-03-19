@@ -7,12 +7,17 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build",
+    "docs": "jsdoc src -d docs"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.13.3",
+    "jsdoc": "^4.0.4",
     "parcel": "^2.13.3",
     "sass": "^1.85.0",
     "sharp": "^0.33.5"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.8"
   }
 }
