@@ -8,7 +8,7 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
-    "docs": "jsdoc src -d docs"
+    "docs": "jsdoc src/javascript -d docs"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.13.3",

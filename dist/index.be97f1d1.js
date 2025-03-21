@@ -710,6 +710,23 @@ function init() {
         }
     });
 }
+const searchBut = document.getElementById('searchbut');
+searchBut.addEventListener('click', searchlocation);
+async function searchlocation() {
+    let location = document.getElementById('locationinput').value;
+    try {
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${location}`);
+        if (!response.ok) throw new Error("N\xe4tverksproblem - felaktigt svar fr\xe5n servern");
+        const data = await response.json();
+        let lat = parseFloat(data[0].lat);
+        let lon = parseFloat(data[0].lon);
+        let map = document.getElementById('mapcont');
+        console.log(`Kart-URL: https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.01},${lat - 0.01},${lon + 0.01},${lat + 0.01}&layer=mapnik&marker=${lat},${lon}`);
+        map.src = `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.01},${lat - 0.01},${lon + 0.01},${lat + 0.01}&layer=mapnik&marker=${lat},${lon}`;
+    } catch (error) {
+        console.error('Det uppstod ett fel:', error.message);
+    }
+}
 
 },{"chart.js/auto":"d8NN9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d8NN9":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

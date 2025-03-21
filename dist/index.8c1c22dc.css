@@ -163,6 +163,26 @@ header img {
   }
 }
 
+#mapflex {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 2%;
+  display: flex;
+}
+
+#mapcont {
+  width: 50%;
+  height: 400px;
+}
+
+#locationinput {
+  width: 200px;
+  padding: 2%;
+}
+
 .mobilemenu {
   z-index: 4;
   width: 45%;

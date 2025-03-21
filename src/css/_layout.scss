@@ -84,3 +84,24 @@ header{
         height: 250px;
     }
 }
+
+
+#mapflex{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+}
+
+#mapcont{
+    width: 50%;
+    height: 400px;
+}
+
+#locationinput{
+    width: 200px;
+    padding: 2%;
+}
