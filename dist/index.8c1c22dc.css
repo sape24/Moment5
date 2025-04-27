@@ -138,28 +138,22 @@ header img {
 
 #diagramcont {
   background-color: #fff;
-  flex-wrap: wrap;
-  place-content: center;
-  max-width: 100%;
-  padding: 10%;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
   display: flex;
 }
 
-#cirkeldiagram, #stapeldiagram {
-  width: 200px;
-  max-width: 100%;
-  height: auto;
-  position: relative;
+#diagramlayout {
+  flex-direction: column;
+  gap: 100px;
+  width: 30%;
+  display: flex;
 }
 
 @media (width <= 800px) {
-  #diagramcont {
-    flex-direction: column;
-  }
-
-  #cirkeldiagram, #stapeldiagram {
-    width: 90%;
-    height: 250px;
+  #diagramlayout {
+    width: 70%;
   }
 }
 

@@ -710,19 +710,41 @@ function init() {
         }
     });
 }
-const searchBut = document.getElementById('searchbut');
+/**
+ * Hämtar sökknappen och lägger till en eventlistener för att anropa sökfunktionen
+ * @constant {HTMLElement} searchBut - Sökknappen i DOM
+ */ const searchBut = document.getElementById('searchbut');
 searchBut.addEventListener('click', searchlocation);
-async function searchlocation() {
+/**
+ * Funktion för att söka i kartan med hjälp av Openstreetmaps nominatim API
+ * @async
+ * @function searchlocation
+ */ async function searchlocation() {
     let location = document.getElementById('locationinput').value;
-    try {
-        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${location}`);
+    /**
+     * Hämtar användarens inmatning och lägger det i en variabel
+     * @type {string}
+     */ try {
+        /**
+         * Hämtar API baserat på vad användaren matat in
+         */ const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${location}`);
         if (!response.ok) throw new Error("N\xe4tverksproblem - felaktigt svar fr\xe5n servern");
-        const data = await response.json();
-        let lat = parseFloat(data[0].lat);
+        /**
+     * omvandlar API-svaret till JSON
+     */ const data = await response.json();
+        /**
+     * Latitude från platsen, parsefloat för att parsea strängen till ett nummer
+     * @type {number}
+     */ let lat = parseFloat(data[0].lat);
         let lon = parseFloat(data[0].lon);
-        let map = document.getElementById('mapcont');
-        console.log(`Kart-URL: https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.01},${lat - 0.01},${lon + 0.01},${lat + 0.01}&layer=mapnik&marker=${lat},${lon}`);
-        map.src = `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.01},${lat - 0.01},${lon + 0.01},${lat + 0.01}&layer=mapnik&marker=${lat},${lon}`;
+        /**
+     * iframe elementet där kartan visas
+     * @constant {HTMLElement} map - iframe i DOM
+     */ let map = document.getElementById('mapcont');
+        /**
+     * Url som visarr kartan i iframen beserat på det hämtade korodinaterna
+     * @constant {string} map.src - OpenStreetMap inbäddad kart url
+     */ map.src = `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.01},${lat - 0.01},${lon + 0.01},${lat + 0.01}&layer=mapnik&marker=${lat},${lon}`;
     } catch (error) {
         console.error('Det uppstod ett fel:', error.message);
     }
